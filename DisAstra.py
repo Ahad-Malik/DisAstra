@@ -198,15 +198,16 @@ def render_panic_button():
 
 def render_ai_doctor():
     st.subheader("🏥 AI Medical Assistant")
-    symptoms = st.text_area("Describe your symptoms or injuries:")
-    severity = st.slider("Rate the severity (1-10):", 1, 10, 5)
 
+    # Button to show chatbot
     if st.button("Get Medical Advice"):
-        if severity >= 8:
-            st.error("⚠ SEEK IMMEDIATE EMERGENCY CARE! Call emergency services immediately.")
-        else:
-            st.info("Based on your description, here are some first aid recommendations...")
-            # Add more detailed medical advice logic here
+        chatbot_iframe = """
+        <iframe src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2024/12/19/09/20241219090710-RX0SNENO.json"
+                width="100%" height="600" style="border:none;">
+        </iframe>
+        """
+        # Render the iframe
+        st.components.v1.html(chatbot_iframe, height=650)
 
 def render_emergency_kit():
     st.subheader("🎒 Emergency Kit Checklist")
@@ -277,7 +278,7 @@ def main():
         """, unsafe_allow_html=True)
 
         # Header with logo
-        st.markdown("# ⚠️ DisasterGuard")
+        st.markdown("# ⚠️ DisAstra")
 
         # Main action buttons
         cols = st.columns(4)
