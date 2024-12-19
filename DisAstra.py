@@ -6,6 +6,8 @@ from datetime import datetime
 import base64
 from geopy.geocoders import Nominatim
 from folium.plugins import LocateControl
+import os
+import base64
 
 def init_db():
     conn = sqlite3.connect(':memory:')
@@ -110,16 +112,16 @@ def create_map(conn):
     return m
 
 def get_safety_guide_download_link():
-    # Create a sample PDF content (in real app, you'd have an actual PDF file)
-    content = """
-    Emergency Safety Guide
-    1. Stay calm and assess the situation
-    2. Contact emergency services if needed
-    3. Follow evacuation procedures
-    4. Help others if safe to do so
-    """
-    b64 = base64.b64encode(content.encode()).decode()
-    return f'<a href="data:application/octet-stream;base64,{b64}" download="safety_guide.txt">Download Safety Guide</a>'
+    file_path = "pocket-guide.pdf" 
+
+    if os.path.exists(file_path):
+        with open(file_path, "rb") as pdf_file:
+            b64 = base64.b64encode(pdf_file.read()).decode()
+
+        # Return the HTML download link
+        return f'<a href="data:application/pdf;base64,{b64}" download="safety_guide.pdf">Download Safety Guide</a>'
+    else:
+        return "Error: Safety guide PDF not found in the directory."
 
 def render_family_form():
     st.subheader("👥 Family Details Form")
@@ -331,7 +333,17 @@ def main():
                 st.session_state.page = "safe_locations"
 
         with cols[3]:
-            st.markdown(get_safety_guide_download_link(), unsafe_allow_html=True)
+            guide_data = get_safety_guide_download_link()
+            if guide_data:
+                st.download_button(
+                    label="📥 Download Safety Guide",
+                    data=guide_data,
+                    file_name="safety_guide.pdf",
+                    mime="application/pdf"
+                )
+            else:
+                st.error("Safety guide PDF not found. Please ensure it is in the correct directory.")
+
 
         # Main content area
         col1, col2 = st.columns([2, 1])
@@ -373,7 +385,7 @@ def main():
                 st.write("Breathe out: 4 seconds")
 
             st.write("### 24/7 Support Hotlines")
-            st.write("National Crisis Hotline: 988")
+            st.write("National Crisis Hotline: 1800 233 3330")
 
     elif st.session_state.page == "family_form":
         render_family_form()
