@@ -338,10 +338,11 @@ def main():
                 st.download_button(
                     label="📥 Download Safety Guide",
                     data=guide_data,
-                    file_name="safety_guide.pdf",
+                    file_name="pocket-guide.pdf",
                     mime="application/pdf"
                 )
             else:
+                st.error("safety guide PDF not found. please ensure it is in he correct directory and please ensure that it is in the proper specified file format and the cure")
                 st.error("Safety guide PDF not found. Please ensure it is in the correct directory.")
 
 
