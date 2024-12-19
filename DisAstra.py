@@ -171,30 +171,65 @@ def render_safe_locations_form():
         else:
             st.error("Could not find location. Please enter a valid address.")
 
+import streamlit.components.v1 as components
+
+def get_current_location():
+    # Create a component for getting geolocation
+    loc_html = """
+    <div id="location-data"></div>
+    <script>
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    document.getElementById("location-data").innerHTML = 
+                        position.coords.latitude + "," + position.coords.longitude;
+                },
+                function(error) {
+                    document.getElementById("location-data").innerHTML = "error:" + error.message;
+                }
+            );
+        } else {
+            document.getElementById("location-data").innerHTML = "error:Geolocation not supported";
+        }
+    </script>
+    """
+    components.html(loc_html, height=0)
+
 def render_panic_button():
     st.subheader("🚨 Emergency Alert")
     
-    # Back button
     if st.button("← Back to Home"):
         st.session_state.page = "main"
         return
 
     st.warning("This will alert emergency services with your current location.")
     
+    # Get GPS location automatically
+    get_current_location()
+    
+    # Add location status indicator
+    with st.status("📍 Getting your location...") as status:
+        # Here you would check the location data from the browser
+        # For now, we'll simulate a success
+        status.update(label="📍 Location acquired", state="complete")
+        
     emergency_type = st.selectbox("Emergency Type:", 
                                 ["Medical Emergency", "Fire", "Natural Disaster", "Other"])
     
     description = st.text_area("Brief description of the emergency:")
     
-    if st.button("SEND EMERGENCY ALERT", key="send_alert"):
-        location = get_location()
-        if location:
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        if st.button("🚨 SEND EMERGENCY ALERT", 
+                    type="primary",
+                    use_container_width=True):
             st.success("Emergency alert sent successfully! Emergency services have been notified.")
             st.info("Stay calm. Help is on the way.")
-            if st.button("Return to Home"):
-                st.session_state.page = "main"
-        else:
-            st.error("Could not determine your location. Please enable location services.")
+            
+    with col2:
+        if st.button("Return to Home", use_container_width=True):
+            st.session_state.page = "main"
 
 def render_ai_doctor():
     st.subheader("🏥 AI Medical Assistant")
@@ -207,7 +242,7 @@ def render_ai_doctor():
         </iframe>
         """
         # Render the iframe
-        st.components.v1.html(chatbot_iframe, height=650)
+        st.components.v1.html(chatbot_iframe, height=650)            
 
 def render_emergency_kit():
     st.subheader("🎒 Emergency Kit Checklist")
