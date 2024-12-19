@@ -1,60 +1,36 @@
-Got it! Here's the updated **README** with proper acknowledgment for the participants:
+# DisAstra - Real-Time Disaster Management App
 
----
+**DisAstra** is an innovative web-based platform designed to provide life-saving support during disaster situations. Equipped with advanced technologies like geolocation, AI, and eye-gaze detection, the app delivers real-time safety information, emergency alerts, and critical resources to individuals and families. From identifying safe zones to accessing mental health support, **DisAstra** ensures you are never alone in times of crisis.
 
-# DisAstra - Real-time Emergency Management App
 
-**DisAstra** is a powerful web-based platform built to provide life-saving support in disaster situations. The app offers real-time safety information, emergency alerts, and practical guidance to individuals and families during emergencies. Using cutting-edge geolocation and mapping technologies, DisAstra helps users identify safe locations, report hazards, send emergency alerts, and access critical resources. From AI-driven medical advice to mental health support, DisAstra ensures you are never alone in times of crisis.
+## 🖥️ Interface
+![Main Page](images/interface.png)
 
----
+## ✨ Key Features
 
-## 🌟 Key Features
+- **Emergency Map:** View and track real-time safe zones, shelters, and affected areas.
+- **Guardian Eye:** Eye-gaze navigation for hands-free interaction.
+- **AI Medical Assistant:** Instant health advice and first aid tips.
+- **Panic Button:** One-tap emergency alerts with real-time location sharing.
+- **Safe Location Reporting:** Community-sourced safe zones updated dynamically.
+- **Family Details Form:** Centralized tracking for family safety.
+- **Emergency Kit Checklist:** Track essential items for preparedness.
+- **Active Alerts:** Real-time disaster notifications and weather warnings.
+- **Mental Health Support:** Guided exercises and crisis hotlines.
+- **Downloadable Safety Guide:** Offline access to disaster protocols and tips.
 
-### 1. **Emergency Map**
-   - **Interactive Map:** See real-time safe locations (shelters, medical facilities, etc.) around you.
-   - **Disaster Zones:** Visualize zones affected by disasters such as floods, strong winds, and fires with color-coded intensity markers.
-   - **Current Location:** The map auto-centers on your live location with blue markers for easy identification.
-   - **Real-Time Location Tracking:** The map updates in real time, allowing you to track and find nearby safe areas.
+## ⚙️ Technology Stack
 
-### 2. **AI Medical Assistant**
-   - **Instant Medical Advice:** Get life-saving medical advice powered by AI through an interactive chatbot.
-   - **Emergency Symptoms Analysis:** Ask questions about symptoms, conditions, or health concerns in real time.
+- **Frontend:** Streamlit for an intuitive interface.
+- **Backend:** SQLite for dynamic data storage.
+- **Mapping:** Folium and Geopy for real-time geospatial features.
+- **Eye-Gaze Detection:** Camera-integrated computer vision models.
+- **AI Chatbot:** Botpress-powered assistant for medical and emergency aid.
 
-### 3. **Panic Button**
-   - **Send Emergency Alerts:** Instantly send alerts with your current location to emergency responders.
-   - **Customizable Alerts:** Specify emergency types (Medical, Fire, Natural Disaster) with a description for first responders.
 
-### 4. **Safe Location Reporting**
-   - **Report Safe Zones:** Mark safe shelters or medical facilities and their available capacity.
-   - **Track Status:** View the status of reported safe locations (Available, Full, etc.) in real-time.
+## 🔧 Installation Guide
 
-### 5. **Family Details Form**
-   - **Family Tracking:** Quickly enter family member names and locations for easy tracking in case of emergency.
-   - **Keep Everyone Safe:** Share family details and have them stored securely for emergency situations.
-
-### 6. **Emergency Kit Checklist**
-   - **Survival Essentials:** Checklist of essential items like water, food, first aid kits, flashlights, and more.
-   - **Pre-pack your kit:** Mark off what you have ready for an emergency and check off as you prepare.
-
-### 7. **Active Alerts**
-   - **Real-Time Disaster Alerts:** Get notified with alerts about ongoing disasters (earthquakes, storms, floods).
-   - **Weather Warnings & Updates:** Keep track of severe weather events and prepare accordingly.
-
-### 8. **Mental Health Support**
-   - **Breathing Exercises:** Access guided breathing exercises to calm your nerves during stressful times.
-   - **Crisis Hotlines:** View emergency mental health support hotlines for immediate assistance.
-
-### 9. **Downloadable Safety Guide**
-   - **Pocket Safety Guide:** Download a handy PDF with disaster preparedness information and tips.
-   - **Essential Steps:** Ensure you have all the necessary info at hand when disaster strikes.
-
----
-
-## 🚀 Installation
-
-To get started with DisAstra, follow these simple steps to install and run the app:
-
-1. **Clone the repository:**
+1. Clone the Repository:
    ```bash
    git clone https://github.com/yourusername/disastra.git
    cd disastra
@@ -98,6 +74,11 @@ Once the app is running, open your browser and navigate to `localhost:8501` to s
    - You can zoom in or out to check nearby **safe zones**, **hospitals**, **shelters**, and **disaster areas** marked with color-coded circles that represent different **disaster intensities** (high, medium, low).
    - **Disaster zones** show details such as intensity (e.g., flood, earthquake), while **safe locations** display their type (shelter, medical), capacity, and availability status.
 
+### Guardian Eye
+   - Enables hands-free interaction with the app using eye-gaze detection technology.
+   - Perfect for situations where users are unable to move or operate their devices manually.
+   - Helps send emergency alerts, navigate maps, or access features with just a glance.
+
 ### Panic Button
    - In case of an emergency, users can quickly trigger the **panic button**.
    - It instantly shares the user’s current location along with the emergency type (medical, fire, disaster) with local emergency responders.
@@ -137,26 +118,15 @@ Once the app is running, open your browser and navigate to `localhost:8501` to s
 
 ---
 
-## 📸 Screenshots
+## 👨‍💻 Contributors
 
-![Main Page](screenshots/main_page.png)
+This project was created by these amazing developers:
 
-![Emergency Map](screenshots/emergency_map.png)
-
-![Panic Button](screenshots/panic_button.png)
-
----
-
-## ⚙️ Technology Stack
-
-- **Frontend:** Streamlit for building a user-friendly interface.
-- **Backend:** SQLite for storing dynamic data, such as alerts and safe location information.
-- **Mapping:** Folium for interactive map rendering.
-- **Geolocation:** Geopy for location tracking and geospatial data.
-- **Emergency Alerts:** SQLite to manage real-time alerts.
+- [Rayyan Khan](https://github.com/Rayyankhan18)
+- [Abdul Parveez](https://github.com/Parveez7)
+- [Ahad Malik](https://github.com/Ahad-Malik)
 
 ---
-
 ## 🤝 Contributing
 
 We welcome contributions to make DisAstra even more helpful for users in crisis situations. If you find any issues, have feature ideas, or want to improve existing code, feel free to submit a pull request!
@@ -172,24 +142,10 @@ We welcome contributions to make DisAstra even more helpful for users in crisis 
 
 ## 📝 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 👨‍💻 Contributors
-
-This project was created by the following amazing developers:
-
-- [Rayyan Khan](https://github.com/Rayyankhan18)
-- [Parveez](https://github.com/Parveez7)
-- [Ahad Malik](https://github.com/Ahad-Malik)
+This project is licensed under the **MIT License** 
 
 ---
 
 _DisAstra_ is designed with your safety in mind, aiming to provide all the tools you need to stay informed and prepared in emergency situations. Together, we can face any disaster, stay safe, and save lives.
 
 **Stay Prepared. Stay Safe. Stay Strong.** 🚨
-
---- 
-
-This version of the README gives credit to the contributors and provides a structured, engaging overview of the project. Let me know if you'd like any further adjustments!
